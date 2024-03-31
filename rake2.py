@@ -8,17 +8,13 @@ import re;
 def clean_text(text):
     """
     Removes HTML tags, JavaScript functions, punctuation marks,
-    lowercase words, and removes stop words (optional).
+    lowercase words, and removes stop words.
     """
     soup = BeautifulSoup(text, 'html.parser')
     text = soup.get_text(separator=' ')  # Remove HTML tags
     text = re.sub(r'[0-9]+', '', text)
     text = re.sub(r'[^\w\s]', '', text)  # Remove punctuation
     text = text.lower()
-
-    # stop_words = set(stopwords.words('english'))
-    # tokens = [word for word in word_tokenize(text) if word not in stop_words]
-    # return tokens
 
     return text
 
